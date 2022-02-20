@@ -7,9 +7,11 @@ const Comment = () => {
   const { comments, isLoading } = useSelector((state) => state.comment);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getComments());
   }, []);
+
   return (
     <>
       {isLoading ? (
@@ -23,8 +25,9 @@ const Comment = () => {
                 margin: "10px",
                 textAlign: "center",
               }}
+              key={comment.id}
             >
-              <h1 key={comment.id}>{comment.name}</h1>
+              <h1>{comment.name}</h1>
               <h3>{comment.email}</h3>
             </div>
           );
